@@ -1,19 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portifolio</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pedro | Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Fixed Floating Glass Navbar -->
+  <nav id="navBar">
+    <h3 id="logo">pedroara22.github.io</h3>
+    <div class="nav-links">
+      <a href="#main-animation">Home</a>
+      <a href="#techsDiv">Tecnologias</a>
+      <a href="#projectsDiv">Projetos</a>
+      <a href="#contactDiv">Contato</a>
+    </div>
+  </nav>
+
+  <!-- Hero Home Section with Canvas Background -->
+  <header id="main-animation">
     <div class="contentDiv">
       <h1>
-        Olá eu sou Pedro, um
-        <span
-        id="job"
-          style="background-clip: text; -webkit-text-fill-color: transparent;"
-        >
+        Olá, eu sou o Pedro, um
+        <span id="job" style="background-clip: text; -webkit-text-fill-color: transparent;">
           programador full-stack
         </span>
         <p class="resume">
@@ -21,62 +33,97 @@
         </p>
       </h1>
     </div>
-    <div class="techsDiv">
-      <h2>Tecnologias</h2>
-      <div class="techs">
-        <div class="tech">
-          <h2 class="react">React</h2>
-          <p>
-            O React é uma biblioteca front-end JavaScript de código aberto com
-            foco em criar interfaces de usuário em páginas web.
-          </p>
-          <a id="mainLink" onclick="selectProjects('react-Btn')">Projetos +</a>
-        </div>
-        <div class="tech">
-          <h2 class="node">Node</h2>
-          <p>
-            Node.js é um ambiente de execução JavaScript server-side. Ele
-            permite a execução de códigos JavaScript no backend.
-          </p>
-          <a onclick="selectProjects('node-Btn')">+</a>
-        </div>
-        <div class="tech">
-          <h2 class="js">JavaScript</h2>
-          <p>
-            JavaScript é uma linguagem de programação interpretada estruturada,
-            de script em alto nível com tipagem dinâmica fraca e multiparadigma.
-          </p>
-          <a onclick="selectProjects('javascript-Btn')">+</a>
-        </div>
-        <div class="tech">
-          <h2 class="mongo">MongoDB</h2>
-          <p>
-            MongoDB é um software de banco de dados orientado a documentos
-            gratuito e de código aberto.
-          </p>
-          <a onclick="selectProjects('mongodb-Btn')">+</a>
+    <div id="bottom-animation">
+      <canvas id="animation-canvas"></canvas>
+    </div>
+  </header>
+
+  <!-- Tech Stack Carousel Section -->
+  <section class="techsDiv" id="techsDiv">
+    <h2>Tecnologias</h2>
+    <div class="techs">
+      <div id="tech-image-carousel">
+        <img src="./public/images/technologies/react.svg" alt="React" class="tech-logo">
+        <img src="./public/images/technologies/nodejs.svg" alt="Node" class="tech-logo">
+        <img src="./public/images/technologies/js.svg" alt="JavaScript" class="tech-logo">
+        <img src="./public/images/technologies/mongodb.svg" alt="MongoDB" class="tech-logo">
+        <img src="./public/images/technologies/html.svg" alt="html" class="tech-logo">
+        <img src="./public/images/technologies/git.svg" alt="git" class="tech-logo">
+        <img src="./public/images/technologies/postgresql.svg" alt="postgresql" class="tech-logo">
+        <img src="./public/images/technologies/python.svg" alt="python" class="tech-logo">
+        <img src="./public/images/technologies/docker.svg" alt="docker" class="tech-logo">
+        <img src="./public/images/technologies/typescript.svg" alt="typescript" class="tech-logo">
+        <img src="./public/images/technologies/mysql.svg" alt="mysql" class="tech-logo">
+        <img src="./public/images/technologies/nextjs.svg" alt="nextjs" class="tech-logo">
+        
+        <!-- Duplicated for infinite scrolling -->
+        <img src="./public/images/technologies/react.svg" alt="React" class="tech-logo">
+        <img src="./public/images/technologies/nodejs.svg" alt="Node" class="tech-logo">
+        <img src="./public/images/technologies/js.svg" alt="JavaScript" class="tech-logo">
+        <img src="./public/images/technologies/mongodb.svg" alt="MongoDB" class="tech-logo">
+        <img src="./public/images/technologies/html.svg" alt="html" class="tech-logo">
+        <img src="./public/images/technologies/git.svg" alt="git" class="tech-logo">
+        <img src="./public/images/technologies/postgresql.svg" alt="postgresql" class="tech-logo">
+        <img src="./public/images/technologies/python.svg" alt="python" class="tech-logo">
+        <img src="./public/images/technologies/docker.svg" alt="docker" class="tech-logo">
+        <img src="./public/images/technologies/typescript.svg" alt="typescript" class="tech-logo">
+        <img src="./public/images/technologies/mysql.svg" alt="mysql" class="tech-logo">
+        <img src="./public/images/technologies/nextjs.svg" alt="nextjs" class="tech-logo">
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Showcase Section -->
+  <section id="projectsDiv">
+    <h2>Projetos</h2>
+    <div id="selector">
+      <a class="all-Btn" id="all-Btn" onclick="selectProjects('all-Btn')">Todos</a>
+      <a id="react-Btn" onclick="selectProjects('react-Btn')">React</a>
+      <a id="node-Btn" onclick="selectProjects('node-Btn')">Node</a>
+      <a id="javascript-Btn" onclick="selectProjects('javascript-Btn')">JavaScript</a>
+      <a id="mongodb-Btn" onclick="selectProjects('mongodb-Btn')">MongoDB</a>
+    </div>
+    <div id="projectsArea"></div>
+  </section>
+
+  <!-- Contact Form & Social Section -->
+  <section id="contactDiv">
+    <h2>Contato</h2>
+    <div class="contact-container">
+      <div class="contact-info">
+        <h3>Vamos criar algo juntos?</h3>
+        <p>Se você tem um projeto em mente, precisa de um site comercial, de um aplicativo personalizado ou apenas quer trocar uma ideia, entre em contato!</p>
+        <div class="contact-details">
+          <a href="mailto:araujo.pedro.work@gmail.com" class="contact-detail-item">
+            <svg class="contact-icon" viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            <span>araujo.pedro.work@gmail.com</span>
+          </a>
+          <a href="https://github.com/pedroara22" target="_blank" class="contact-detail-item">
+            <svg class="contact-icon" viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.137 20.164 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+            <span>github.com/pedroara22</span>
+          </a>
         </div>
       </div>
     </div>
-    <div id="projectsDiv">
-        <h2>Projects</h2>
-        <div id="selector">
-            <a class="all-Btn" id="all-Btn" onclick="selectProjects('all-Btn')">Todos</a>
-            <a id="react-Btn" onclick="selectProjects('react-Btn')">React</a>
-            <a id="node-Btn" onclick="selectProjects('node-Btn')">Node</a>
-            <a id="javascript-Btn" onclick="selectProjects('javascript-Btn')">JavaScript</a>
-            <a id="mongodb-Btn" onclick="selectProjects('mongodb-Btn')">MongoDB</a>
-        </div>
-        <div id="projectsArea">
-        </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="footer">
+    <div class="footer-content">
+      <div class="footer-logo">pedroara22.github.io</div>
+      <p class="footer-copy">&copy; 2026 Pedro. Desenvolvido com foco em alta performance e harmonia visual.</p>
+      <a href="#" class="back-to-top">
+        Voltar ao topo
+        <svg class="arrow-up-icon" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
+      </a>
     </div>
-  </body>
+  </footer>
+
+  <!-- Background Layer -->
   <div id="main"></div>
-  <div id="navBar">
-    <a>Home</a>
-    <a>Tecnologias</a>
-    <a>Projetos</a>
-    <a>Contato</a>
-  </div>
+
+  <!-- Main scripts -->
   <script src="./script.js"></script>
+</body>
+
 </html>
