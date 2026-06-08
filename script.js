@@ -5,8 +5,8 @@ var projects = [
     descricao:
       "Um aplicativo simples onde os usuários podem criar, ler, atualizar e deletar tarefas. O frontend em React se comunicaria com uma API RESTful em Node.js para manipular os dados armazenados no MongoDB.",
     coverImage: "./public/images/projects/task_manager.png",
-    github: "https://github.com/pedroara22/task-manager",
-    link: "https://github.com/pedroara22/task-manager"
+    github: "https://github.com/pedroara22/taskflow",
+    link: "https://github.com/pedroara22/taskflow"
   },
   {
     nomeDoProjeto: "E-commerce",
