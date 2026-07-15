@@ -10,37 +10,12 @@ var projects = [
   },
   {
     nomeDoProjeto: "E-commerce",
-    tecnologias: ["Next-Btn", "node-Btn", "javascript-Btn", "mongodb-Btn"],
+    tecnologias: ["Next-Btn", "node-Btn", "Typescript-Btn"],
     descricao:
       "Um site de comércio eletrônico feito com Next.js completo com páginas de produtos, carrinho de compras, checkout, gerenciamento de inventário e autenticação de usuário. Pode incluir um painel administrativo para gerenciar produtos e pedidos.",
     coverImage: "./public/images/projects/ecommerce.png",
-    github: "https://github.com/pedroara22/next-ecommerce",
-    link: "https://github.com/pedroara22/next-ecommerce"
-  },
-  {
-    nomeDoProjeto: "Chat em Tempo Real",
-    tecnologias: [
-      "react-Btn",
-      "node-Btn",
-      "javascript-Btn",
-      "Socket.io",
-      "mongodb-Btn",
-      "Postgresql"
-    ],
-    descricao:
-      "Um aplicativo de chat em tempo real onde os usuários podem criar contas, adicionar amigos e conversar em tempo real. Utilizar WebSockets (Socket.io) para comunicação em tempo real e MongoDB para armazenar mensagens e informações de usuários.",
-    coverImage: "./public/images/projects/chat_app.png",
-    github: "https://github.com/pedroara22/realtime-chat",
-    link: "https://github.com/pedroara22/realtime-chat"
-  },
-  {
-    nomeDoProjeto: "Aplicativo de Receitas",
-    tecnologias: ["react-Btn", "node-Btn", "javascript-Btn", "mongodb-Btn"],
-    descricao:
-      "Um aplicativo onde os usuários podem compartilhar receitas, pesquisar por ingredientes, salvar receitas favoritas e deixar avaliações. Pode incluir categorias e filtros para facilitar a navegação.",
-    coverImage: "./public/images/projects/recipe_app.png",
-    github: "https://github.com/pedroara22/recipe-app",
-    link: "https://github.com/pedroara22/recipe-app"
+    github: "https://github.com/pedroara22/ecom",
+    link: "https://github.com/pedroara22/ecom"
   },
 ];
 
@@ -50,6 +25,7 @@ const tagLabels = {
   "javascript-Btn": "JavaScript",
   "mongodb-Btn": "MongoDB",
   "Next-Btn": "Next.js",
+  "Typescript-Btn": "TypeScript",
   "Socket.io": "Socket.io"
 };
 
@@ -59,7 +35,7 @@ function renderProjects(projectsList) {
   const area = document.getElementById("projectsArea");
   if (!area) return;
   area.innerHTML = "";
-  
+
   projectsList.forEach((project, index) => {
     // Generate styled badges
     const tagsHTML = project.tecnologias.map(t => {
@@ -122,7 +98,7 @@ function selectProjects(filter) {
     document.getElementById(selected).className = "";
     selected = filter;
   }
-  
+
   renderProjects(projectsByFilter);
 }
 
@@ -130,6 +106,22 @@ setTimeout(() => {
   projectsByFilter = projects;
   renderProjects(projectsByFilter);
 }, 1);
+
+// Mobile nav toggle
+const navToggle = document.getElementById("navToggle");
+const navLinks = document.getElementById("navLinks");
+if (navToggle && navLinks) {
+  navToggle.addEventListener("click", () => {
+    navLinks.classList.toggle("open");
+    navToggle.classList.toggle("open");
+  });
+  navLinks.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("open");
+      navToggle.classList.remove("open");
+    });
+  });
+}
 
 const canvas = document.getElementById("animation-canvas");
 const ctx = canvas.getContext('2d');
@@ -166,7 +158,7 @@ class Node {
     const waveSpeed = 0.018;
     const waveX = Math.sin(time * waveSpeed + this.homeY * 0.007) * 9;
     const waveY = Math.cos(time * waveSpeed + this.homeX * 0.007) * 9;
-    
+
     let targetX = this.homeX + waveX;
     let targetY = this.homeY + waveY;
 
@@ -174,15 +166,15 @@ class Node {
       const dx = this.x - mouse.x;
       const dy = this.y - mouse.y;
       const dist = Math.sqrt(dx * dx + dy * dy);
-      
+
       if (dist < mouse.currentRadius) {
         const force = (mouse.currentRadius - dist) / mouse.currentRadius;
         const angle = Math.atan2(dy, dx);
-        
+
         const push = force * 60;
         targetX += Math.cos(angle) * push;
         targetY += Math.sin(angle) * push;
-        
+
         this.activeRatio = Math.max(this.activeRatio, force);
       }
     }
@@ -235,7 +227,7 @@ function draw() {
   // 1. Draw connecting mesh lines (highly optimized O(N) neighbor draw)
   ctx.shadowBlur = 0;
   const rows = grid.length;
-  
+
   for (let r = 0; r < rows; r++) {
     const cols = grid[r].length;
     for (let c = 0; c < cols; c++) {
@@ -252,11 +244,11 @@ function draw() {
   nodes.forEach(node => {
     const hue = (245 + node.activeRatio * 65) % 360;
     const saturation = 40 + node.activeRatio * 40;
-    const lightness = 56 - node.activeRatio * 13;  
-    const alpha = 0.28 + node.activeRatio * 0.62; 
-    
+    const lightness = 56 - node.activeRatio * 13;
+    const alpha = 0.28 + node.activeRatio * 0.62;
+
     ctx.fillStyle = `hsla(${hue}, ${saturation}%, ${lightness}%, ${alpha})`;
-    
+
     const size = 2.0 + node.activeRatio * 3.5;
 
     if (node.activeRatio > 0.15) {
@@ -293,7 +285,7 @@ function drawMeshLine(node1, node2) {
 
   ctx.strokeStyle = `hsla(${hue}, ${saturation}%, ${lightness}%, ${opacity})`;
   ctx.lineWidth = (0.7 + maxActive * 1.3) * stretchRatio;
-  
+
   ctx.beginPath();
   ctx.moveTo(node1.x, node1.y);
   ctx.lineTo(node2.x, node2.y);
